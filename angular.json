@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "getapi-angular": "apps/getapi-angular",
+    "getapi-angular-e2e": "apps/getapi-angular-e2e"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/getapi-angular",
+  "sourceRoot": "apps/getapi-angular/src",
+  "prefix": "getapi-angular",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/getapi-angular",
+        "index": "apps/getapi-angular/src/index.html",
+        "main": "apps/getapi-angular/src/main.ts",
+        "polyfills": "apps/getapi-angular/src/polyfills.ts",
+        "tsConfig": "apps/getapi-angular/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/getapi-angular/src/favicon.ico",
+          "apps/getapi-angular/src/assets"
+        ],
+        "styles": ["apps/getapi-angular/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/getapi-angular/src/environments/environment.ts",
+              "with": "apps/getapi-angular/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "getapi-angular:build:production"
+        },
+        "development": {
+          "browserTarget": "getapi-angular:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "getapi-angular:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/getapi-angular/src/**/*.ts",
+          "apps/getapi-angular/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/getapi-angular"],
+      "options": {
+        "jestConfig": "apps/getapi-angular/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
